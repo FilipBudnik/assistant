@@ -7,15 +7,15 @@ import datetime
 sr = speech_recognition.Recognizer()
 sr.pause_threshold = 0.5
 
-commands_dict = {
-    "commands": (dict(
-            execute_cmd=("текущее время", "который час", "сейчас времени"),
-            greenting=("привет", "добрый вечер", "зравствуй", "добрый день", "доброе утра", "привет мой старый друг"),
-            play_music=("включи музыку", " запусти проигрыватель", "включи песню", "воспроизведи композицию "),
-            create_task=('добавить задачу', "задача", "поставить задачу", "записать задачу"))
-                 )
-
-}
+# commands_dict = {
+#     "commands": (dict(
+#             execute_cmd=("текущее время", "который час", "сейчас времени"),
+#             greenting=("привет", "добрый вечер", "зравствуй", "добрый день", "доброе утра", "привет мой старый друг"),
+#             play_music=("включи музыку", " запусти проигрыватель", "включи песню", "воспроизведи композицию "),
+#             create_task=('добавить задачу', "задача", "поставить задачу", "записать задачу"))
+#                  )
+#
+# }
 def listen_commend():
     """ The function will return the recognized command"""
 
@@ -61,13 +61,17 @@ def greeting():
 
 def main():
     query = listen_commend()
-
-    for k, v in commands_dict['commands'].items():
-        if query in v:
-            print(globals()[k]())
+    if query == "привет":
+        print(greeting())
+    if query == "который час":
+        print(execute_cmd())
+    elif query =='добавить задачу' or"поставить задачу":
+        print(create_task())
+    elif query == "включи музыку":
+        print(play_music())
     else:
         print("Поговорим когда научишься разговаривать! >:|")
 
-
+#
 if __name__ == '__main__':
     main()
