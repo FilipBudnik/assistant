@@ -37,8 +37,8 @@ def play_music():
 
     return f'Танцуй под этот трек {random_file.split("/")[-1]}'
 
-def execute_cmd(cmd):
-    if cmd == 'ctime':
+def execute_cdm(cdm):
+    if cdm == 'ctime':
        #сказать текущее время
         now = datetime.datetime.now()
         print("Сейчас" + str(now.hour) + ':' + str(now.minute))
@@ -63,12 +63,12 @@ def main():
     query = listen_commend()
     if query == "привет":
         print(greeting())
-    if query == "который час":
-        print(execute_cmd())
-    elif query =='добавить задачу' or"поставить задачу":
+    # elif query == "который час":
+    #     print(execute_cdm())
+    elif query == 'добавить задачу':
         print(create_task())
-    elif query == "включи музыку":
-        print(play_music())
+    # elif query == "включи музыку":
+    #     print(play_music())
     else:
         print("Поговорим когда научишься разговаривать! >:|")
 
